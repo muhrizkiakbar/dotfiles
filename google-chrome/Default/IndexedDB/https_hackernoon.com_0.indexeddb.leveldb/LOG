@@ -1,0 +1,5 @@
+2020/10/07-16:34:53.912 2c0a5 Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_hackernoon.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/07-16:35:28.562 7636 Level-0 table #5: started
+2020/10/07-16:35:28.570 7636 Level-0 table #5: 1150 bytes OK
+2020/10/07-16:35:28.581 7636 Delete type=0 #3
+2020/10/07-16:35:28.581 7636 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

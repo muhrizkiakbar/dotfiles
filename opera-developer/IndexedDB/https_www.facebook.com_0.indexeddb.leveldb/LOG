@@ -1,0 +1,5 @@
+2020/10/22-21:45:59.101 14057a Reusing MANIFEST /home/muhrizkiakbar/.config/opera-developer/IndexedDB/https_www.facebook.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/22-21:46:31.217 14006e Level-0 table #5: started
+2020/10/22-21:46:31.225 14006e Level-0 table #5: 1240 bytes OK
+2020/10/22-21:46:31.236 14006e Delete type=0 #3
+2020/10/22-21:46:31.236 14006e Manual compaction at level-0 from (begin) .. (end); will stop at (end)

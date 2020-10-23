@@ -1,0 +1,12 @@
+/** Configured For Applets **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  location: 5;
+  yoffset: -50;
+  xoffset: -20;
+}
+
+@import "~/.config/rofi/themes/colorschemes/material-light/purple.rasi"
+/*@import "~/.config/rofi/themes/apps.rasi"*/

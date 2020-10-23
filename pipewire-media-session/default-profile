@@ -1,0 +1,2 @@
+alsa_card.pci-0000:00:1b.0 output:analog-stereo+input:analog-stereo
+alsa_card.pci-0000:00:03.0 output:hdmi-stereo

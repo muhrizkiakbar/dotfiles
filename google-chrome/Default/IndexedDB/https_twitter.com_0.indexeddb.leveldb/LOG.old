@@ -1,0 +1,15 @@
+2020/10/07-15:11:42.821 2199e Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_twitter.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/07-15:11:42.821 2199e Recovering log #11
+2020/10/07-15:11:42.821 2199e Reusing old log /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_twitter.com_0.indexeddb.leveldb/000011.log 
+2020/10/07-15:30:08.532 7636 Level-0 table #16: started
+2020/10/07-15:30:08.538 7636 Level-0 table #16: 623 bytes OK
+2020/10/07-15:30:08.550 7636 Delete type=0 #11
+2020/10/07-15:30:08.550 7636 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2020/10/07-15:30:08.550 7636 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01(\x00u\x00s\x00e\x00r\x00:\x001\x007\x000\x002\x006\x008\x006\x001\x001\x00:\x00r\x00w\x00e\x00b\x00.\x00d\x00m\x00Q\x00u\x00i\x00c\x00k\x00A\x00c\x00c\x00e\x00s\x00s\x00E\x00n\x00a\x00b\x00l\x00e\x00d' @ 490 : 1
+2020/10/07-15:30:08.550 7636 Compacting 1@1 + 1@2 files
+2020/10/07-15:30:08.559 7636 Generated table #17@1: 52 keys, 1387 bytes
+2020/10/07-15:30:08.559 7636 Compacted 1@1 + 1@2 files => 1387 bytes
+2020/10/07-15:30:08.569 7636 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/10/07-15:30:08.570 7636 Delete type=2 #13
+2020/10/07-15:30:08.570 7636 Delete type=2 #16
+2020/10/07-15:30:08.570 7636 Manual compaction at level-1 from '\x00\x01\x01\x02\x01(\x00u\x00s\x00e\x00r\x00:\x001\x007\x000\x002\x006\x008\x006\x001\x001\x00:\x00r\x00w\x00e\x00b\x00.\x00d\x00m\x00Q\x00u\x00i\x00c\x00k\x00A\x00c\x00c\x00e\x00s\x00s\x00E\x00n\x00a\x00b\x00l\x00e\x00d' @ 490 : 1 .. (end); will stop at (end)

@@ -1,0 +1,5 @@
+2020/10/07-12:19:42.883 5557 Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_www.linkedin.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/07-12:19:46.304 7636 Level-0 table #5: started
+2020/10/07-12:19:46.313 7636 Level-0 table #5: 1061 bytes OK
+2020/10/07-12:19:46.331 7636 Delete type=0 #3
+2020/10/07-12:19:46.331 7636 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

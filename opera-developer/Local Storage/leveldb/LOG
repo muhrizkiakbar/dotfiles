@@ -1,0 +1,21 @@
+2020/10/23-15:53:08.121 6ba Reusing MANIFEST /home/muhrizkiakbar/.config/opera-developer/Local Storage/leveldb/MANIFEST-000001
+2020/10/23-15:53:08.121 6ba Recovering log #122
+2020/10/23-15:53:08.121 6ba Reusing old log /home/muhrizkiakbar/.config/opera-developer/Local Storage/leveldb/000122.log 
+2020/10/23-16:03:45.950 1d0b Level-0 table #125: started
+2020/10/23-16:03:45.957 1d0b Level-0 table #125: 20038 bytes OK
+2020/10/23-16:03:45.969 1d0b Delete type=0 #122
+2020/10/23-16:23:57.542 3d56 Level-0 table #127: started
+2020/10/23-16:23:57.554 3d56 Level-0 table #127: 18450 bytes OK
+2020/10/23-16:23:57.566 3d56 Delete type=0 #124
+2020/10/23-17:04:22.627 87c4 Level-0 table #129: started
+2020/10/23-17:04:22.637 87c4 Level-0 table #129: 17833 bytes OK
+2020/10/23-17:04:22.648 87c4 Delete type=0 #126
+2020/10/23-17:04:22.648 9faa Compacting 4@0 + 1@1 files
+2020/10/23-17:04:22.672 9faa Generated table #130@0: 1059 keys, 509374 bytes
+2020/10/23-17:04:22.672 9faa Compacted 4@0 + 1@1 files => 509374 bytes
+2020/10/23-17:04:22.685 9faa compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/10/23-17:04:22.685 9faa Delete type=2 #127
+2020/10/23-17:04:22.685 9faa Delete type=2 #125
+2020/10/23-17:04:22.685 9faa Delete type=2 #119
+2020/10/23-17:04:22.685 9faa Delete type=2 #121
+2020/10/23-17:04:22.685 9faa Delete type=2 #129

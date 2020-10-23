@@ -1,0 +1,12 @@
+2020/10/22-15:07:32.903 1017af Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/Storage/ext/fhbjgbiflinjbdggehcddcbncdddomop/def/IndexedDB/chrome-extension_fhbjgbiflinjbdggehcddcbncdddomop_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/22-15:07:32.904 1017af Recovering log #15
+2020/10/22-15:07:32.952 1017af Reusing old log /home/muhrizkiakbar/.config/google-chrome/Default/Storage/ext/fhbjgbiflinjbdggehcddcbncdddomop/def/IndexedDB/chrome-extension_fhbjgbiflinjbdggehcddcbncdddomop_0.indexeddb.leveldb/000015.log 
+2020/10/22-15:42:17.383 105e16 Level-0 table #21: started
+2020/10/22-15:42:17.411 105e16 Level-0 table #21: 808922 bytes OK
+2020/10/22-15:42:17.423 105e16 Delete type=0 #15
+2020/10/22-16:20:08.922 10d278 Compacting 1@1 + 1@2 files
+2020/10/22-16:20:08.935 10d278 Generated table #22@1: 697 keys, 50227 bytes
+2020/10/22-16:20:08.935 10d278 Compacted 1@1 + 1@2 files => 50227 bytes
+2020/10/22-16:20:08.946 10d278 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/10/22-16:20:08.946 10d278 Delete type=2 #21
+2020/10/22-16:20:08.947 10d278 Delete type=2 #18

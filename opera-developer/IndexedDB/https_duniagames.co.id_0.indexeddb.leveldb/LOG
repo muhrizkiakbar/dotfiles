@@ -1,0 +1,7 @@
+2020/10/23-11:06:17.254 776 Reusing MANIFEST /home/muhrizkiakbar/.config/opera-developer/IndexedDB/https_duniagames.co.id_0.indexeddb.leveldb/MANIFEST-000001
+2020/10/23-11:06:17.255 776 Recovering log #3
+2020/10/23-11:06:17.255 776 Reusing old log /home/muhrizkiakbar/.config/opera-developer/IndexedDB/https_duniagames.co.id_0.indexeddb.leveldb/000003.log 
+2020/10/23-11:17:42.478 1b4b Level-0 table #5: started
+2020/10/23-11:17:42.487 1b4b Level-0 table #5: 1322 bytes OK
+2020/10/23-11:17:42.498 1b4b Delete type=0 #3
+2020/10/23-11:17:42.498 1b4b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
