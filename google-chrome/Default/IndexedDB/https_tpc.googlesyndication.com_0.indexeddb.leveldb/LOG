@@ -1,8 +1,0 @@
-2020/10/07-18:43:07.562 3fbb1 Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/10/07-18:43:07.562 3fbb1 Recovering log #7
-2020/10/07-18:43:07.563 3fbb1 Reusing old log /home/muhrizkiakbar/.config/google-chrome/Default/IndexedDB/https_tpc.googlesyndication.com_0.indexeddb.leveldb/000007.log 
-2020/10/07-18:43:10.702 7636 Level-0 table #11: started
-2020/10/07-18:43:10.702 7636 Level-0 table #11: 0 bytes OK
-2020/10/07-18:43:10.717 7636 Delete type=0 #7
-2020/10/07-18:43:10.717 7636 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
-2020/10/07-18:43:10.717 7636 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

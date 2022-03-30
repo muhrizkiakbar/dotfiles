@@ -1,6 +1,0 @@
-2020/10/22-18:43:00.920 125409 Reusing MANIFEST /home/muhrizkiakbar/.config/google-chrome/Default/Sync Data/LevelDB/MANIFEST-000001
-2020/10/22-18:43:00.921 125409 Recovering log #86
-2020/10/22-18:43:00.922 125409 Reusing old log /home/muhrizkiakbar/.config/google-chrome/Default/Sync Data/LevelDB/000086.log 
-2020/10/23-10:16:51.705 1b2a93 Level-0 table #91: started
-2020/10/23-10:16:51.727 1b2a93 Level-0 table #91: 151411 bytes OK
-2020/10/23-10:16:51.746 1b2a93 Delete type=0 #86

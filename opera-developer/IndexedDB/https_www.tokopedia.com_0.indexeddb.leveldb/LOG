@@ -1,5 +1,0 @@
-2020/10/23-12:47:01.553 c099 Reusing MANIFEST /home/muhrizkiakbar/.config/opera-developer/IndexedDB/https_www.tokopedia.com_0.indexeddb.leveldb/MANIFEST-000001
-2020/10/23-13:08:30.877 f98f Level-0 table #5: started
-2020/10/23-13:08:30.887 f98f Level-0 table #5: 43543 bytes OK
-2020/10/23-13:08:30.898 f98f Delete type=0 #3
-2020/10/23-13:08:30.898 f98f Manual compaction at level-0 from (begin) .. (end); will stop at (end)
