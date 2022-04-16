@@ -98,13 +98,6 @@ Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 
 " A The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plugin 'ngmy/vim-rubocop'
-
-" A Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
-
-
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-
 Plugin 'ivalkeen/vim-ctrlp-tjump'
 
 " For tag ruby
@@ -112,6 +105,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-bundler'
+Plugin 'muhrizkiakbar/vim-rspec'
 
 "Language server
 Plugin 'williamboman/nvim-lsp-installer'
@@ -124,13 +118,12 @@ Plugin 'hrsh7th/cmp-cmdline'
 Plugin 'saadparwaiz1/cmp_luasnip'
 Plugin 'L3MON4D3/LuaSnip'
 Plugin 'ray-x/lsp_signature.nvim'
-"Plugin 'hrsh7th/cmp-vsnip'
 Plugin 'onsails/lspkind-nvim'
 Plugin 'hrsh7th/vim-vsnip'
 Plugin 'hrsh7th/vim-vsnip-integ'
-Plugin 'nvim-lua/completion-nvim'
 Plugin 'lithammer/nvim-pylance'
 Plugin 'folke/lsp-colors.nvim'
+Plugin 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 
 
 " OSX stupid backspace fix
@@ -151,7 +144,8 @@ filetype plugin indent on    " required
 "set guifont=Fira\ Code:h18
 "set guifont=Fira\ Code:h11
 "set guifont=Fira\ Code:h11
-set guifont=FiraCode\ Nerd\ Font\ Retina:h11
+"set guifont=FiraCode\ Nerd\ Font\ Retina:h11
+set guifont=Caskaydia\ Cove\ Nerd\ Font\ Complete\ Mono:h11
 "if exists('g:fvim_loaded')
 "    " good old 'set guifont' compatibility
 "    set guifont=FiraCode\ Nerd\ Font\ Retina:h18
@@ -194,13 +188,6 @@ set background=dark
 if (has("termguicolors"))
   set termguicolors
 endif
-
-"onehalf
-"if exists('+termguicolors')
-  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  "set termguicolors
-"endif
 
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme spacegray
@@ -506,7 +493,7 @@ let g:surround_61 = "<%= \r %>"
 nmap <leader>y ysiW=<cr> 
 nmap <leader>u ysiW-<cr> 
 
-let g:vimrubocop_config = '/Users/muhrizkiakbar/Project/Performance-API/.rubocop.yml'
+let g:vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
 
@@ -737,4 +724,10 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 nmap <leader>n :TagbarToggle<CR>
-nnoremap <leader>. :CtrlPTag<cr>
+
+" RSpec.vim mappings
+let g:rspec_with_debug = 1
+map <Leader>c :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
