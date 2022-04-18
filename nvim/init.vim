@@ -579,11 +579,13 @@ local str = require("cmp.utils.str")
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		scrollbar = "║",
-	},
+  window = {
+    completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      scrollbar = "║",
+    },
+  },
 	formatting = {
 		fields = {
 			cmp.ItemField.Kind,
