@@ -185,6 +185,7 @@ alias gf="git fetch"
 alias kubedb_forward='kubectl port-forward svc/postgres 5433:5432 -n performance-testing'
 alias kubedb_dump='pg_dump -h localhost -p 5433 -U happy5 happy5_performance --no-owner --no-acl --schema=happy5 > dump-dev.sql'
 alias gtags='ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp . $(bundle list --paths)'
+alias keymon='key-mon --visible_click'
 
 alias kubelist='kubectl get pods -n performance-testing'
 
