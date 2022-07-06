@@ -90,11 +90,12 @@ Plugin 'ajh17/spacegray.vim'
 Plugin 'atelierbram/Base2Tone-vim'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'micha/vim-colors-solarized'
-Plugin 'yggdroot/indentLine'
+"Plugin 'yggdroot/indentLine'
 Plugin 'rigellute/shades-of-purple.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
+Plugin 'lukas-reineke/indent-blankline.nvim'
 
 " A The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plugin 'ngmy/vim-rubocop'
@@ -106,6 +107,9 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-bundler'
 Plugin 'muhrizkiakbar/vim-rspec'
+
+" For golang
+Plugin 'fatih/vim-go'
 
 "Language server
 Plugin 'williamboman/nvim-lsp-installer'
@@ -196,7 +200,7 @@ endif
 "colorscheme onedark
 "colorscheme nord
 colorscheme dracula
-" colorscheme spacemacs-theme
+ "colorscheme spacemacs-theme
 "colorscheme onehalfdark
 "colorscheme onehalflight
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#F24B42
@@ -213,9 +217,10 @@ let g:airline_powerline_fonts = 1
 "let g:shades_of_purple_airline = 1
 "let g:airline_theme='shades_of_purple'
 "let g:airline_theme='papercolor'
-let g:airline_theme='dracula'
+"let g:airline_theme='dracula'
 "let g:airline_theme='nord'
 "let g:airline_theme='onehalflight'
+let g:airline_theme='onehalfdark'
 "let g:hybrid_custom_term_colors = 1
 "let g:hybrid_reduced_contrast = 1 
 
@@ -379,9 +384,12 @@ map <C-S> <leader>bv
 "Save file
 nmap <leader>w :w!<cr> 
 
+"nmap <leader>fa :setlocal foldmethod=indent<cr>
 nmap <leader>fa :setlocal foldmethod=indent<cr>
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
-let g:indentLine_color_term = 239
+"let g:indentLine_color_term = 239
 
 " Mapping selecting Mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -466,8 +474,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 
 " Vim
-let g:indentLine_enabled = 1
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_enabled = 0
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -505,6 +513,16 @@ let g:markdown_fenced_languages = [
 
 
 lua << EOF
+-- Setup for indent
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+require("indent_blankline").setup {
+  space_char_blankline = " ",
+    -- for example, context is off by default, use this to turn it on
+  show_current_context = true,
+  show_current_context_start = true,
+}
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -700,13 +718,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-
-
 require("lsp-colors").setup({
   Error = "#db4b4b",
   Warning = "#e0af68",
   Information = "#bf0dd7",
   Hint = "#10B981"
+})
+
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "ruby", "lua", "go" },
+
+  sync_install = false,
+  indent = {
+    enable = true
+  },
+
+  highlight = {
+    enable = true,
+  },
 })
 
 EOF
@@ -725,6 +754,34 @@ let g:tagbar_type_ruby = {
         \ 'F: singleton methods'
     \ ]
 \ }
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p: package',
+		\ 'i: imports:1',
+		\ 'c: constants',
+		\ 'v: variables',
+		\ 't:types',
+		\ 'n: interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm: methods',
+		\ 'r: constructor',
+		\ 'f: functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
 nmap <leader>n :TagbarToggle<CR>
 
 " RSpec.vim mappings
@@ -733,3 +790,5 @@ map <Leader>c :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+
