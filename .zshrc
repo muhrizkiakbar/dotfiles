@@ -7,7 +7,7 @@ fi
 
 #export TERM="xterm-256color"
 #export TERM="xterm-kitty"
-export TERM=screen-256color
+#export TERM=screen-256color
 
 #; Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -46,7 +46,7 @@ DISABLE_AUTO_UPDATE=true
 # User configuration
 
 
-# export EDITOR='nvim'
+export EDITOR='nvim'
 
 # Load private keys
 #source ~/dotfiles/secret-keys.sh
@@ -256,25 +256,6 @@ function gall() {
 if [ "$TMUX" = "" ]; then tmux; fi
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
-
-
-
-
-
-#Wireless communication features can be disabled on a hardware level. It is toggled by pressing Fn+PrtScr (next to F12). Check it out.
-
-#As far as I know, BCMA is blacklisted because it causes problems having it running with broadcom-wl. If you want to try it, uninstall linux38-broadcom-wl (BCMA is automatically unblacklisted).
-
-#Rebuild broadcom-wl and reboot. (https://wiki.archlinux.org/index.php/Makepkg#Usage)
-
-#Try to install moduls: sudo modprobe -a bcma wl.
-
-#Try to delete from blacklist last two lines: blacklist brcmsmac blacklist bcma
-
-#After that check output of this command: lspci -k | grep -i -A3 wi.
-
-#If it does not help, then add the line to that file: blacklist wl
-
 source /etc/profile
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -285,3 +266,5 @@ PERL5LIB="/Users/muhrizkiakbar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export
 PERL_LOCAL_LIB_ROOT="/Users/muhrizkiakbar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/muhrizkiakbar/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/muhrizkiakbar/perl5"; export PERL_MM_OPT;
+
+source "$HOME/.rvm/scripts/rvm"
