@@ -386,7 +386,7 @@ nmap <leader>w :w!<cr>
 
 "nmap <leader>fa :setlocal foldmethod=indent<cr>
 nmap <leader>fa :setlocal foldmethod=indent<cr>
-set foldmethod=expr
+"set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 "let g:indentLine_color_term = 239
@@ -403,6 +403,7 @@ nnoremap <Leader>p :Files<CR>
 "nnoremap <Leader>p :CtrlP<CR>
 " save file
 nnoremap <space>w :w<CR>
+nnoremap <space><esc> :noh<CR>
 
 map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
 
@@ -515,7 +516,7 @@ let g:markdown_fenced_languages = [
 lua << EOF
 -- Setup for indent
 vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("space: ")
 vim.opt.listchars:append("eol:↴")
 require("indent_blankline").setup {
   space_char_blankline = " ",
@@ -680,12 +681,19 @@ cmp.setup {
   },
 }
 
-local signs = {
- { name = "DiagnosticSignError", text = "", color = "#eb4034" },
- { name = "DiagnosticSignWarn", text = "", color = "#ebc034" },
- { name = "DiagnosticSignHint", text = "", color = "#25d2db" },
- { name = "DiagnosticSignInfo", text = "", color = "#db4b4b" },
-}
+-- local sign v1
+-- local signs = {
+--  { name = "DiagnosticSignError", text = "", color = "#eb4034" },
+--  { name = "DiagnosticSignWarn", text = "", color = "#ebc034" },
+--  { name = "DiagnosticSignHint", text = "", color = "#25d2db" },
+--  { name = "DiagnosticSignInfo", text = "", color = "#db4b4b" },
+-- }
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "", guifg = sign.color, ctermfg = sign.color })
@@ -698,7 +706,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     -- Enable virtual text, override spacing to 4
     virtual_text = {
       spacing = 2,
-      prefix = ' ',
+      -- prefix = ' ',
+      prefix = '●', -- Could be '■', '▎', 'x'
     },
     -- Use a function to dynamically turn signs off
     -- and on, using buffer local variables
@@ -706,14 +715,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       active = signs,
     },
     update_in_insert = false,
+    severity_sort = true,
     float = {
-      focus = false,
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
       source = "always",
-      header = "",
-      prefix = "",
+      -- focus = false,
+      -- focusable = false,
+      -- style = "minimal",
+      -- border = "rounded",
+      -- header = "",
+      -- prefix = "",
     },
   }
 )
@@ -738,6 +748,8 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
+
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 EOF
 
 let g:completion_enable_auto_popup = 1
@@ -790,5 +802,4 @@ map <Leader>c :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
 
