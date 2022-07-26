@@ -189,6 +189,8 @@ alias keymon='key-mon --visible_click'
 
 alias kubelist='kubectl get pods -n performance-testing'
 
+alias sc='$HOME/.local/bin/flameshot-imgck'
+
 function gemtags(){
   ctags -R -f gems.tag * ~/.rvm/gems/ruby-"$1"/gems
 }
