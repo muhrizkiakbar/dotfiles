@@ -160,9 +160,9 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
 #export PATH="$HOME/bin:/usr/local/sbin:$PATH"
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+#export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 unset DOCKER_TLS_VERIFY
 unset DOCKER_CERT_PATH
@@ -172,7 +172,10 @@ unset DOCKER_HOST
 
 source $ZSH/oh-my-zsh.sh
 
-plugins=(git tmux )
+plugins=(
+git
+tmux
+)
 
 
 #
@@ -256,7 +259,8 @@ function gall() {
 
 }
 
-if [ "$TMUX" = "" ]; then tmux; fi
+if [ "$TMUX" = "" ]; then tmux new-session -A -s workspace; fi
+#tmux
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 source /etc/profile
@@ -278,3 +282,18 @@ if [ -f '/home/akbar/google-cloud-sdk/path.zsh.inc' ]; then . '/home/akbar/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/akbar/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/akbar/google-cloud-sdk/completion.zsh.inc'; fi
+#PATH="/Users/muhrizkiakbar/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/Users/muhrizkiakbar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/Users/muhrizkiakbar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/Users/muhrizkiakbar/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/Users/muhrizkiakbar/perl5"; export PERL_MM_OPT;
+
+#source "$HOME/.rvm/scripts/rvm"
+source "/etc/profile.d/rvm.sh"
+ZSH_TMUX_AUTOSTART=true
+alias python=python3
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
