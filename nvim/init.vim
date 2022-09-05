@@ -6,6 +6,8 @@ syntax on
 set nowrap
 set encoding=utf8
 set noswapfile
+set mouse=
+set updatetime=250
 """" START Vundle Configuration 
 " Disable file type for vundle
 "filetype off                  " required
@@ -56,11 +58,10 @@ Plugin 'dpelle/vim-languagetool'
 Plugin 'vimwiki/vimwiki'
 
 " Git Support
-Plugin 'kablamo/vim-git-log'
-Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jreybert/vimagit'
-
+Plugin 'airblade/vim-gitgutter'
+Plugin 'sodapopcan/vim-twiggy'
 
 " Javascript
 Plugin 'leafgarland/typescript-vim'
@@ -372,6 +373,9 @@ map <C-l> <C-W>l
 "map <space> /
 map <silent> <leader><cr> :noh<cr>
 """"""""""""""""""""""""""""""""""""
+
+"reload setelah ganti branch
+map <silent> <space>e :bufdo e<cr>
 
 """"""""""""""""""""""""""""""""""""
 " Bufexplorer
@@ -754,7 +758,7 @@ EOF
 
 let g:completion_enable_auto_popup = 1
 "inoremap <C-space> <C-x><C-o>
-set tags+=.tags,gems.tag
+set tags+=tags,.tags,gems.tag
 "nnoremap <leader>gt :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
@@ -766,6 +770,23 @@ let g:tagbar_type_ruby = {
         \ 'F: singleton methods'
     \ ]
 \ }
+
+"if executable('ripper-tags')
+  "let g:tagbar_type_ruby = {
+      "\ 'kinds'      : ['m:modules',
+                      "\ 'c:classes',
+                      "\ 'C:constants',
+                      "\ 'F:singleton methods',
+                      "\ 'f:methods',
+                      "\ 'a:aliases'],
+      "\ 'kind2scope' : { 'c' : 'class',
+                       "\ 'm' : 'class' },
+      "\ 'scope2kind' : { 'class' : 'c' },
+      "\ 'ctagsbin'   : 'ripper-tags',
+      "\ 'ctagsargs'  : ['-f', '-']
+      "\ }
+"endif
+
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
 	\ 'kinds'     : [
@@ -803,3 +824,6 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+
+" tag setting
+let g:tabgbar_ctags_bin="ctags"
