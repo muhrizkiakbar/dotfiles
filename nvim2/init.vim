@@ -6,6 +6,9 @@ syntax on
 set nowrap
 set encoding=utf8
 set noswapfile
+"set mouse=
+set updatetime=250
+set clipboard=unnamedplus
 """" START Vundle Configuration 
 " Disable file type for vundle
 "filetype off                  " required
@@ -24,14 +27,12 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 Plugin 'stsewd/fzf-checkout.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'gilsondev/searchtasks.vim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'tpope/vim-surround'
-"Plugin 'Shougo/deoplete.nvim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mattn/emmet-vim'
@@ -40,6 +41,7 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'prettier/vim-prettier', { 'do' : 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plugin 'tweekmonster/startuptime.vim'
 Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plugin 'tjdevries/colorbuddy.nvim'
 
 " Generic Programming Support 
 Plugin 'honza/vim-snippets'
@@ -56,11 +58,10 @@ Plugin 'dpelle/vim-languagetool'
 Plugin 'vimwiki/vimwiki'
 
 " Git Support
-Plugin 'kablamo/vim-git-log'
-Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
 Plugin 'jreybert/vimagit'
-
+Plugin 'airblade/vim-gitgutter'
+Plugin 'sodapopcan/vim-twiggy'
 
 " Javascript
 Plugin 'leafgarland/typescript-vim'
@@ -90,28 +91,27 @@ Plugin 'ajh17/spacegray.vim'
 Plugin 'atelierbram/Base2Tone-vim'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'micha/vim-colors-solarized'
-Plugin 'yggdroot/indentLine'
+"Plugin 'yggdroot/indentLine'
 Plugin 'rigellute/shades-of-purple.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'sonph/onehalf', { 'rtp': 'vim' }
+Plugin 'lukas-reineke/indent-blankline.nvim'
+Plugin 'lunarvim/Onedarker.nvim'
+Plugin 'svrana/neosolarized.nvim'
+
 
 " A The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plugin 'ngmy/vim-rubocop'
-
-" A Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
-
-
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-
-Plugin 'ivalkeen/vim-ctrlp-tjump'
-
-" For tag ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-bundler'
+Plugin 'muhrizkiakbar/vim-rspec'
+Plugin 'ruby-formatter/rufo-vim'
+
+" For golang
+Plugin 'fatih/vim-go'
 
 "Language server
 Plugin 'williamboman/nvim-lsp-installer'
@@ -121,13 +121,15 @@ Plugin 'hrsh7th/cmp-nvim-lsp'
 Plugin 'hrsh7th/cmp-buffer'
 Plugin 'hrsh7th/cmp-path'
 Plugin 'hrsh7th/cmp-cmdline'
+Plugin 'saadparwaiz1/cmp_luasnip'
+Plugin 'L3MON4D3/LuaSnip'
 Plugin 'ray-x/lsp_signature.nvim'
-Plugin 'hrsh7th/cmp-vsnip'
+Plugin 'onsails/lspkind-nvim'
 Plugin 'hrsh7th/vim-vsnip'
 Plugin 'hrsh7th/vim-vsnip-integ'
-Plugin 'nvim-lua/completion-nvim'
 Plugin 'lithammer/nvim-pylance'
 Plugin 'folke/lsp-colors.nvim'
+Plugin 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 
 
 " OSX stupid backspace fix
@@ -148,7 +150,8 @@ filetype plugin indent on    " required
 "set guifont=Fira\ Code:h18
 "set guifont=Fira\ Code:h11
 "set guifont=Fira\ Code:h11
-set guifont=FiraCode\ Nerd\ Font\ Retina:h11
+"set guifont=FiraCode\ Nerd\ Font\ Retina:h11
+set guifont=Caskaydia\ Cove\ Nerd\ Font\ Complete\ Mono:h11
 "if exists('g:fvim_loaded')
 "    " good old 'set guifont' compatibility
 "    set guifont=FiraCode\ Nerd\ Font\ Retina:h18
@@ -192,21 +195,15 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-"onehalf
-"if exists('+termguicolors')
-  "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  "set termguicolors
-"endif
-
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme spacegray
 "colorscheme shades_of_purple
 "colorscheme PaperColor
 "colorscheme onedark
 "colorscheme nord
-colorscheme dracula
-" colorscheme spacemacs-theme
+"colorscheme dracula
+colorscheme neosolarized
+ "colorscheme spacemacs-theme
 "colorscheme onehalfdark
 "colorscheme onehalflight
 hi DiagnosticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=#F24B42
@@ -223,9 +220,10 @@ let g:airline_powerline_fonts = 1
 "let g:shades_of_purple_airline = 1
 "let g:airline_theme='shades_of_purple'
 "let g:airline_theme='papercolor'
-let g:airline_theme='dracula'
+"let g:airline_theme='dracula'
 "let g:airline_theme='nord'
 "let g:airline_theme='onehalflight'
+let g:airline_theme='onehalfdark'
 "let g:hybrid_custom_term_colors = 1
 "let g:hybrid_reduced_contrast = 1 
 
@@ -254,7 +252,7 @@ augroup pencil
   autocmd FileType text         call pencil#init()
 augroup END
 
-
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
 " Fzf Configuration
 " This is the default extra key bindings
@@ -378,6 +376,9 @@ map <C-l> <C-W>l
 map <silent> <leader><cr> :noh<cr>
 """"""""""""""""""""""""""""""""""""
 
+"reload setelah ganti branch
+map <silent> <space>e :bufdo e<cr>
+
 """"""""""""""""""""""""""""""""""""
 " Bufexplorer
 map <C-o> <leader>be
@@ -389,9 +390,12 @@ map <C-S> <leader>bv
 "Save file
 nmap <leader>w :w!<cr> 
 
+"nmap <leader>fa :setlocal foldmethod=indent<cr>
 nmap <leader>fa :setlocal foldmethod=indent<cr>
+"set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
-let g:indentLine_color_term = 239
+"let g:indentLine_color_term = 239
 
 " Mapping selecting Mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -405,6 +409,7 @@ nnoremap <Leader>p :Files<CR>
 "nnoremap <Leader>p :CtrlP<CR>
 " save file
 nnoremap <space>w :w<CR>
+nnoremap <space><esc> :noh<CR>
 
 map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
 
@@ -421,7 +426,6 @@ let g:multi_cursor_quit_key            = '<C-D>'
 
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
@@ -476,8 +480,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 
 " Vim
-let g:indentLine_enabled = 1
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"let g:indentLine_enabled = 0
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -485,6 +489,11 @@ function! s:check_back_space() abort
 endfunction
 
 let g:user_emmet_leader_key=','
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " Change mode
 inoremap jj <ESC>
@@ -498,135 +507,124 @@ nmap <Leader>py <Plug>(Prettier)
 "untuk penutup tag web
 let g:ragtag_global_maps = 1
 
-let g:surround_45 = "<% \r %>"                                                                                                                              
+let g:surround_45 = "<% \r %>"
 let g:surround_61 = "<%= \r %>"
 nmap <leader>y ysiW=<cr> 
 nmap <leader>u ysiW-<cr> 
 
-"let g:vimrubocop_config = '/Users/muhrizkiakbar/.config/nvim/.rubocop_todo.yml'
-let g:vimrubocop_config = '/Users/muhrizkiakbar/Project/Performance-API/.rubocop.yml'
+let g:vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
 
-" COC VIM LSP
-let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
-
-set completeopt=menuone,noinsert,noselect
-set completeopt-=preview
-autocmd BufEnter * lua require('completion').on_attach()
-let g:completion_enable_auto_signature = 1
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype ruby setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics{focusable=false}
-
 
 lua << EOF
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local completion = require('completion')
-local nvim_lsp = require('lspconfig')
+-- Setup for indent
+local status, n = pcall(require, "neosolarized")
+if (not status) then return end
 
-local signs = {
- { name = "DiagnosticSignError", text = "", color = "#eb4034" },
- { name = "DiagnosticSignWarn", text = "", color = "#ebc034" },
- { name = "DiagnosticSignHint", text = "", color = "#25d2db" },
- { name = "DiagnosticSignInfo", text = "", color = "#db4b4b" },
+n.setup({
+  comment_italics = true,
+})
+
+local cb = require('colorbuddy.init')
+local Color = cb.Color
+local colors = cb.colors
+local Group = cb.Group
+local groups = cb.groups
+local styles = cb.styles
+
+Color.new('black', '#000000')
+Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
+Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
+Group.new('Visual', colors.none, colors.base03, styles.reverse)
+
+local cError = groups.Error.fg
+local cInfo = groups.Information.fg
+local cWarn = groups.Warning.fg
+local cHint = groups.Hint.fg
+
+Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
+Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)
+Group.new("DiagnosticVirtualTextWarn", cWarn, cWarn:dark():dark():dark(), styles.NONE)
+Group.new("DiagnosticVirtualTextHint", cHint, cHint:dark():dark():dark(), styles.NONE)
+Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.undercurl, cError)
+Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl, cWarn)
+Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
+Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
+
+-- Treesitter config
+local status, ts = pcall(require, "nvim-treesitter.configs")
+if (not status) then return end
+
+ts.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "tsx",
+    "toml",
+    "fish",
+    "php",
+    "json",
+    "yaml",
+    "swift",
+    "css",
+    "html",
+    "ruby",
+    "lua"
+  },
+  autotag = {
+    enable = true,
+  },
 }
 
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "", guifg = sign.color, ctermfg = sign.color })
-end
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+parser_config.ruby.filetype_to_parsername = { "ruby", "*.rb" }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable underline, use default values
-    underline = true,
-    -- Enable virtual text, override spacing to 4
-    virtual_text = {
-      spacing = 2,
-      prefix = ' ',
+-- Indent blank line config
+-- V2
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#08272f gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#001e26 gui=nocombine]]
+
+require("indent_blankline").setup {
+    char = "",
+    char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
     },
-    -- Use a function to dynamically turn signs off
-    -- and on, using buffer local variables
-    signs = {
-      active = signs,
+    space_char_highlight_list = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
     },
-    update_in_insert = false,
-    float = {
-      focus = false,
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  }
-)
+    show_trailing_blankline_indent = true,
+    show_current_context = true,
+    show_current_context_start = true,
+}
+-- V1
+-- vim.opt.list = true
+-- vim.opt.listchars:append("space: ")
+-- vim.opt.listchars:append("eol:↴")
+-- require("indent_blankline").setup {
+--   space_char_blankline = " ",
+--   show_current_context = true,
+--   show_current_context_start = true,
+-- }
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  completion.on_attach(client, bufnr)
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- Add additional capabilities supported by nvim-cmp
+capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
+-- after the language server attaches to the current buffer
+local nvim_lsp = require('lspconfig')
 
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gK', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'gT', '<cmd>lua vim.lsp.buf.document_highlight()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts) 
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-  
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-      buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-      buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
-
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-      vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-          autocmd!
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-      ]], false)
-  end
-end
-
--- map buffer local keybindings when the language server attaches
--- Setup lspconfig.
-local servers = { "solargraph", "rust_analyzer", "pyright" }
-local tes_capabilities = vim.lsp.protocol.make_client_capabilities()
---local servers = { "solargraph" }
-tes_capabilities.textDocument.completion.completionItem.snippetSupport = true
---capabilities = require('cmp_nvim_lsp').update_capabilities(tes_capabilities)
-capabilities = tes_capabilities
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = { "solargraph", "rust_analyzer", "pyright", "gopls", "tsserver", "tailwindcss"}
 
 for _, lsp in ipairs(servers) do
   if lsp == "pyright" then
@@ -634,14 +632,49 @@ for _, lsp in ipairs(servers) do
     pylance.setup()
     nvim_lsp.pyright.setup {
       on_attach = on_attach,
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { 'python' },
+      single_file_support = true,
       settings = {
         python = {
           analysis = {
-            typeCheckingMode = "basic",
-            completeFunctionParens = true,
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            useLibraryCodeForTypes = true
           }
         }
       }
+    }
+  elseif lsp == "tailwindcss" then
+    local cmd = { "tailwindcss-language-server", "--stdio" }
+    local filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "markdown", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" }
+    local util = require 'lspconfig.util'
+
+    nvim_lsp.tsserver.setup {
+      cmd = cmd,
+      settings = {
+        tailwindCSS = {
+          classAttributes = { "class", "className", "classList", "ngClass" },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning"
+          },
+          validate = true
+        }
+      },
+      init_options = {
+        userLanguages = {
+          eelixir = "html-eex",
+          eruby = "erb"
+        }
+      },
+      filetypes = filetypes,
+      root_dir = util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts', 'package.json', 'node_modules', '.git'),
     }
   elseif lsp == "solargraph" then
     local cmd = { 'solargraph', 'stdio' }
@@ -661,6 +694,46 @@ for _, lsp in ipairs(servers) do
         debounce_text_changes = 150,
       }
     }
+  elseif lsp == "gopls" then
+    local cmd = { "gopls" }
+    local util = require 'lspconfig.util'
+    nvim_lsp.gopls.setup {
+      cmd = cmd,
+      init_options = { formatting = true },
+      filetypes = { "go", "gomod", "gotmpl" },
+      root_dir = util.root_pattern('go.mod', '.git'),
+        flags = {
+        debounce_text_changes = 150,
+      },
+      single_file_support = true
+    }
+  elseif lsp == "rust_analyzer" then
+    local cmd = { "rust-analyzer" }
+    local util = require 'lspconfig.util'
+    nvim_lsp.rust_analyzer.setup {
+      cmd = cmd,
+      init_options = { formatting = true },
+      filetypes = { "rust" },
+      root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+      flags = {
+        debounce_text_changes = 150,
+      },
+      single_file_support = true
+    }
+  elseif lsp == "tsserver" then
+    local cmd = { "typescript-language-server", "--stdio" }
+    local filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+    local util = require 'lspconfig.util'
+
+    nvim_lsp.tsserver.setup {
+      cmd = cmd,
+      init_options = {
+        hostInfo = "neovim"
+      },
+      filetypes = filetypes,
+      root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+      single_file_support = true
+    }
   else
     nvim_lsp[lsp].setup {
       capabilities = capabilities,
@@ -669,20 +742,248 @@ for _, lsp in ipairs(servers) do
   end
 end
 
+-- luasnip setup
+local luasnip = require 'luasnip'
+local lspkind = require("lspkind")
+local types = require("cmp.types")
+local str = require("cmp.utils.str")
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  window = {
+    completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      scrollbar = "║",
+    },
+  },
+	formatting = {
+		fields = {
+			cmp.ItemField.Kind,
+			cmp.ItemField.Abbr,
+			cmp.ItemField.Menu,
+		},
+		format = lspkind.cmp_format({
+			with_text = false,
+			before = function(entry, vim_item)
+				-- Get the full snippet (and only keep first line)
+				local word = entry:get_insert_text()
+				if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+					word = vim.lsp.util.parse_snippet(word)
+				end
+				word = str.oneline(word)
+
+				-- concatenates the string
+				-- local max = 50
+				-- if string.len(word) >= max then
+				-- 	local before = string.sub(word, 1, math.floor((max - 3) / 2))
+				-- 	word = before .. "..."
+				-- end
+
+				if
+					entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+					and string.sub(vim_item.abbr, -1, -1) == "~"
+				then
+					word = word .. "~"
+				end
+				vim_item.abbr = word
+
+				return vim_item
+			end,
+		}),
+	},
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
+
+-- local sign v1
+-- local signs = {
+--  { name = "DiagnosticSignError", text = "", color = "#eb4034" },
+--  { name = "DiagnosticSignWarn", text = "", color = "#ebc034" },
+--  { name = "DiagnosticSignHint", text = "", color = "#25d2db" },
+--  { name = "DiagnosticSignInfo", text = "", color = "#db4b4b" },
+-- }
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "", guifg = sign.color, ctermfg = sign.color })
+end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable underline, use default values
+    underline = true,
+    -- Enable virtual text, override spacing to 4
+    virtual_text = {
+      spacing = 2,
+      -- prefix = ' ',
+      prefix = '●', -- Could be '■', '▎', 'x'
+    },
+    -- Use a function to dynamically turn signs off
+    -- and on, using buffer local variables
+    signs = {
+      active = signs,
+    },
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+      source = "always",
+      -- focus = false,
+      -- focusable = false,
+      -- style = "minimal",
+      -- border = "rounded",
+      -- header = "",
+      -- prefix = "",
+    },
+  }
+)
+
 require("lsp-colors").setup({
   Error = "#db4b4b",
   Warning = "#e0af68",
   Information = "#bf0dd7",
   Hint = "#10B981"
 })
-  -- Information = "#0db9d7",
 
+require("nvim-treesitter.configs").setup({
+  ensure_installed = { "ruby", "lua", "go" },
+
+  sync_install = false,
+  indent = {
+    enable = true
+  },
+
+  highlight = {
+    enable = true,
+  },
+})
+
+
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 EOF
 
-let g:completion_enable_snippet = 'vim-vsnip'
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:completion_enable_auto_popup = 1
-inoremap <C-space> <C-x><C-o>
-set tags+=.tags
-nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+"inoremap <C-space> <C-x><C-o>
+set tags+=tags,.tags,gems.tag
+"nnoremap <leader>gt :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm: modules',
+        \ 'c:ﴯ classes',
+        \ 'd: describes',
+        \ 'C: contexts',
+        \ 'f: methods',
+        \ 'F: singleton methods'
+    \ ]
+\ }
+
+"if executable('ripper-tags')
+  "let g:tagbar_type_ruby = {
+      "\ 'kinds'      : ['m:modules',
+                      "\ 'c:classes',
+                      "\ 'C:constants',
+                      "\ 'F:singleton methods',
+                      "\ 'f:methods',
+                      "\ 'a:aliases'],
+      "\ 'kind2scope' : { 'c' : 'class',
+                       "\ 'm' : 'class' },
+      "\ 'scope2kind' : { 'class' : 'c' },
+      "\ 'ctagsbin'   : 'ripper-tags',
+      "\ 'ctagsargs'  : ['-f', '-']
+      "\ }
+"endif
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p: package',
+		\ 'i: imports:1',
+		\ 'c: constants',
+		\ 'v: variables',
+		\ 't:types',
+		\ 'n: interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm: methods',
+		\ 'r: constructor',
+		\ 'f: functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
+
+nmap <leader>n :TagbarToggle<CR>
+
+" RSpec.vim mappings
+let g:rspec_with_debug = 1
+map <Leader>c :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+
+" tag setting
+let g:tabgbar_ctags_bin="ctags"
+
+function! ClipboardYank()
+  call system('pbcopy', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('pbpaste')
+endfunction
+
+vnoremap <silent> y y:call ClipboardYank()<cr>
+vnoremap <silent> d d:call ClipboardYank()<cr>
+nnoremap <silent> p :call ClipboardPaste()<cr>p

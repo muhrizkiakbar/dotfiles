@@ -46,8 +46,8 @@ DISABLE_AUTO_UPDATE=true
 # User configuration
 
 
-export EDITOR='code'
-#export EDITOR='nvim'
+#export EDITOR='code'
+export EDITOR='nvim'
 
 # Load private keys
 #source ~/dotfiles/secret-keys.sh
@@ -268,28 +268,22 @@ source /etc/profile
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-PATH="/Users/muhrizkiakbar/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/muhrizkiakbar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/muhrizkiakbar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/muhrizkiakbar/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/muhrizkiakbar/perl5"; export PERL_MM_OPT;
-PATH="~/akbar/.local/bin${PATH:+:${PATH}}"; export PATH;
+#PATH="/Users/muhrizkiakbar/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/Users/muhrizkiakbar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/Users/muhrizkiakbar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/Users/muhrizkiakbar/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/Users/muhrizkiakbar/perl5"; export PERL_MM_OPT;
+PATH="~/akbarevi/.local/bin${PATH:+:${PATH}}"; export PATH;
 
 source "$HOME/.rvm/scripts/rvm"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/akbar/google-cloud-sdk/path.zsh.inc' ]; then . '/home/akbar/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/akbar/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/akbar/google-cloud-sdk/completion.zsh.inc'; fi
 #PATH="/Users/muhrizkiakbar/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="/Users/muhrizkiakbar/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="/Users/muhrizkiakbar/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 #PERL_MB_OPT="--install_base \"/Users/muhrizkiakbar/perl5\""; export PERL_MB_OPT;
 #PERL_MM_OPT="INSTALL_BASE=/Users/muhrizkiakbar/perl5"; export PERL_MM_OPT;
 
-#source "$HOME/.rvm/scripts/rvm"
-source "/etc/profile.d/rvm.sh"
+source "$HOME/.rvm/scripts/rvm"
+#source "/etc/profile.d/rvm.sh"
 ZSH_TMUX_AUTOSTART=true
 alias python=python3
 
@@ -297,3 +291,9 @@ alias python=python3
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/akbarevi/google-cloud-sdk/path.zsh.inc' ]; then . '/home/akbarevi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/akbarevi/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/akbarevi/google-cloud-sdk/completion.zsh.inc'; fi

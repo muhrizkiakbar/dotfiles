@@ -26,14 +26,12 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
 Plugin 'stsewd/fzf-checkout.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'gilsondev/searchtasks.vim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'tpope/vim-surround'
-"Plugin 'Shougo/deoplete.nvim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mattn/emmet-vim'
@@ -100,9 +98,6 @@ Plugin 'lukas-reineke/indent-blankline.nvim'
 
 " A The Vim RuboCop plugin runs RuboCop and displays the results in Vim
 Plugin 'ngmy/vim-rubocop'
-Plugin 'ivalkeen/vim-ctrlp-tjump'
-
-" For tag ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rbenv'
@@ -424,7 +419,6 @@ let g:multi_cursor_quit_key            = '<C-D>'
 
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
@@ -509,12 +503,6 @@ nmap <leader>u ysiW-<cr>
 let g:vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
-
-" COC VIM LSP
-let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
 
 
 lua << EOF
