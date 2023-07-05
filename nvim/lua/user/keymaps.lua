@@ -53,7 +53,7 @@ vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", opts)
 -- telescope
 vim.api.nvim_set_keymap("n", "<C-p>", ":Telescope find_files hidden=true<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-f>", ":Telescope buffers<CR>", opts)
---vim.api.nvim_set_keymap("n", "<C-G>", ":Telescope live_grep<CR>", opts)
+vim.api.nvim_set_keymap("n", "<C-G>", ":Telescope live_grep<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-B>", ":Telescope oldfiles<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-Space>", ":Telescope file_browser  path=%:p:h<CR>", opts)
 
@@ -75,7 +75,7 @@ keymap.set("n", "<leader>fa", ":setlocal foldmethod=indent<CR>", opts)
 -- remove highlight
 keymap.set("n", "<Space><Esc>", ":noh<CR>", opts)
 
-keymap.set("", "<C-g>", ":Ag<CR>", opts)
+--keymap.set("", "<C-g>", ":Ag<CR>", opts)
 
 -- emmet
 vim.g.user_emmet_leader_key = ','
