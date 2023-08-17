@@ -15,7 +15,7 @@ telescope.setup {
   config = function()
     local telescope_ag = require("telescope-ag")
       telescope_ag.setup({
-        cmd = { "grep", "-rn" }
+        cmd = telescope_ag.cmds.rg, -- defaults to telescope_ag.cmds.ag
     })
   end,
   defaults = {

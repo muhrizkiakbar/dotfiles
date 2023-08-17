@@ -82,11 +82,34 @@ vim.g.user_emmet_leader_key = ','
 
 
 -- RSpec
-vim.g.rspec_with_debug = 1
-keymap.set('', '<leader>c', ':call RunCurrentSpecFile()<CR>')
-keymap.set('', '<leader>s', ':call RunNearestSpec()<CR>')
-keymap.set('', '<leader>l', ':call RunLastSpec()<CR>')
-keymap.set('', '<leader>a', ':call RunAllSpecs()<CR>')
+--vim.g.rspec_with_debug = 1
+--keymap.set('', '<leader>c', ':call RunCurrentSpecFile()<CR>')
+--keymap.set('', '<leader>s', ':call RunNearestSpec()<CR>')
+--keymap.set('', '<leader>l', ':call RunLastSpec()<CR>')
+--keymap.set('', '<leader>a', ':call RunAllSpecs()<CR>')
+-- Neotest Rspec
+local function apply_keymaps()
+    local current_file = vim.fn.expand('%:p')
+    local extension = vim.fn.expand('%:e')
+
+    if extension == 'rb' then
+        keymap.set('', '<leader>s', function() require("neotest").run.run() end)
+        keymap.set('', '<leader>c', function() require("neotest").run.run(vim.fn.expand("%")) end)
+    elseif extension == 'go' then
+    else
+        -- Reset keymaps if no specific keymaps are defined
+        vim.api.nvim_buf_del_keymap(0, 'n')
+    end
+end
+
+-- Set up autocmd to trigger the apply_keymaps function when a buffer is loaded
+vim.cmd([[
+    augroup CustomKeymaps
+        autocmd!
+        autocmd BufRead * lua apply_keymaps()
+    augroup END
+]])
+
 
 -- commenter
 keymap.set('v', '++', '<plug>NERDCommenterToggle')
@@ -97,3 +120,12 @@ vim.g.surround_45 = "<% \r %>"
 vim.g.surround_61 = "<%= \r %>"
 keymap.set('n', '<leader>y', 'ysiW=<cr>')
 keymap.set('n', '<leader>u', 'ysiW-<cr>')
+
+
+-- Git conflict
+keymap.set('n', 'co', '<Plug>(git-conflict-ours)')
+keymap.set('n', 'ct', '<Plug>(git-conflict-theirs)')
+keymap.set('n', 'cb', '<Plug>(git-conflict-both)')
+keymap.set('n', 'c0', '<Plug>(git-conflict-none)')
+keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)')
+keymap.set('n', '[x', '<Plug>(git-conflict-next-conflict)')

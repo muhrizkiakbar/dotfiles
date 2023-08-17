@@ -1,5 +1,6 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
+local util = require 'lspconfig.util'
 
 local protocol = require('vim.lsp.protocol')
 
@@ -51,3 +52,35 @@ nvim_lsp.solargraph.setup {
   }
 }
 
+
+nvim_lsp.gopls.setup {
+  cmd = { "gopls" },
+  on_attach = on_attach,
+  init_options = { formatting = true },
+  filetypes = { "go", "gomod", "gotmpl", "gowork" },
+  root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+    flags = {
+    debounce_text_changes = 150,
+  },
+  single_file_support = true,
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+}
+
+nvim_lsp.rust_analyzer.setup {
+  cmd = { "rust-analyzer" },
+  init_options = { formatting = true },
+  filetypes = { "rust" },
+  root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+  flags = {
+    debounce_text_changes = 150,
+  },
+  single_file_support = true
+}

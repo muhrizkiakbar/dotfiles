@@ -45,3 +45,6 @@ vim.opt.formatoptions:append { 'r' }
 
 -- Rubocop
 vim.g.vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
+
+-- Font
+vim.opt.guifont="Iosevka Nerd Font Mono"

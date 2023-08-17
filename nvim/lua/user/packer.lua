@@ -1,4 +1,16 @@
 local status, packer = pcall(require, "packer")
+
+--local fn = vim.fn
+--local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+--print("install_path: " .. install_path)
+--if fn.empty(fn.glob(install_path)) > 0 then
+--    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+--    download_result = fn.system({'ls', '-l', install_path})
+--    print("download_result: " .. download_result)
+--end
+
+vim.cmd [[packadd packer.nvim]]
+
 if (not status) then
   print("Packer is not installed")
   return
@@ -147,7 +159,7 @@ return packer.startup(function(use)
   --})
 
   -- rspec
-  use { 'muhrizkiakbar/vim-rspec' }
+  --use { 'muhrizkiakbar/vim-rspec' }
 
   -- commenter
   use { 'preservim/nerdcommenter' }
@@ -157,4 +169,52 @@ return packer.startup(function(use)
 
   -- surround
   use { 'tpope/vim-surround' }
+
+  -- git conflict
+  use {'akinsho/git-conflict.nvim', tag = "*", config = function()
+    require('git-conflict').setup()
+  end}
+
+  -- vim go
+  use { 'fatih/vim-go', run = ':GoInstallBinaries' }
+
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+
+  -- Testing Package
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "olimorris/neotest-rspec"
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-rspec")({
+            rspec_cmd = function()
+              return vim.tbl_flatten({
+                "bundle",
+                "exec",
+                "rspec",
+              })
+            end,
+            root_files = { "Gemfile", ".rspec", ".gitignore" },
+            filter_dirs = { ".git", "node_modules" },
+            transform_spec_path = function(path)
+              return path
+            end,
+            results_path = function()
+              return async.fn.tempname()
+            end
+          }),
+        }
+      })
+    end
+  }
 end)
