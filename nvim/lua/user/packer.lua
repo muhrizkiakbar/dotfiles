@@ -1,13 +1,13 @@
 local status, packer = pcall(require, "packer")
 
---local fn = vim.fn
---local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
---print("install_path: " .. install_path)
---if fn.empty(fn.glob(install_path)) > 0 then
---    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
---    download_result = fn.system({'ls', '-l', install_path})
---    print("download_result: " .. download_result)
---end
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+print("install_path: " .. install_path)
+if fn.empty(fn.glob(install_path)) > 0 then
+    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    download_result = fn.system({'ls', '-l', install_path})
+    print("download_result: " .. download_result)
+end
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -185,36 +185,16 @@ return packer.startup(function(use)
   end
 
   -- Testing Package
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec"
-    },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-rspec")({
-            rspec_cmd = function()
-              return vim.tbl_flatten({
-                "bundle",
-                "exec",
-                "rspec",
-              })
-            end,
-            root_files = { "Gemfile", ".rspec", ".gitignore" },
-            filter_dirs = { ".git", "node_modules" },
-            transform_spec_path = function(path)
-              return path
-            end,
-            results_path = function()
-              return async.fn.tempname()
-            end
-          }),
-        }
-      })
-    end
-  }
+  use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neotest/neotest-plenary",
+			"nvim-neotest/neotest-vim-test",
+			"olimorris/neotest-rspec",
+      "nvim-neotest/neotest-go",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+		},
+	})
 end)

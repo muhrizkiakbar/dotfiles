@@ -6,13 +6,6 @@ if not status_ok then
   return
 end
 
--- local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
--- if not config_status_ok then
---   return
--- end
-
--- local tree_cb = nvim_tree_config.nvim_tree_callback
-
 nvim_tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
@@ -160,14 +153,3 @@ nvim_tree.setup {
     require_confirm = true,
   }
 }
-
---vim.cmd [[
---hi NvimTreeRootFolder   guifg=#CCB17A guibg=NONE
---hi NvimTreeFolderIcon   guifg=#CCB17A guibg=NONE
---hi NvimTreeIndentMarker guifg=#3C3C3C guibg=NONE
---hi NvimTreeGitDirty     guifg=#CCB17A guibg=NONE
---hi NvimTreeGitStaged    guifg=#CCB17A guibg=NONE
---hi NvimTreeGitMerge     guifg=#CCB17A guibg=NONE
---hi NvimTreeGitRenamed   guifg=#CCB17A guibg=NONE
---hi NvimTreeGitNew       guifg=#CCB17A guibg=NONE
---]]

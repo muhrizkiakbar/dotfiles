@@ -87,29 +87,8 @@ vim.g.user_emmet_leader_key = ','
 --keymap.set('', '<leader>s', ':call RunNearestSpec()<CR>')
 --keymap.set('', '<leader>l', ':call RunLastSpec()<CR>')
 --keymap.set('', '<leader>a', ':call RunAllSpecs()<CR>')
--- Neotest Rspec
-local function apply_keymaps()
-    local current_file = vim.fn.expand('%:p')
-    local extension = vim.fn.expand('%:e')
-
-    if extension == 'rb' then
-        keymap.set('', '<leader>s', function() require("neotest").run.run() end)
-        keymap.set('', '<leader>c', function() require("neotest").run.run(vim.fn.expand("%")) end)
-    elseif extension == 'go' then
-    else
-        -- Reset keymaps if no specific keymaps are defined
-        vim.api.nvim_buf_del_keymap(0, 'n')
-    end
-end
-
--- Set up autocmd to trigger the apply_keymaps function when a buffer is loaded
-vim.cmd([[
-    augroup CustomKeymaps
-        autocmd!
-        autocmd BufRead * lua apply_keymaps()
-    augroup END
-]])
-
+keymap.set('', '<leader>s', function() require("neotest").run.run() end)
+keymap.set('', '<leader>c', function() require("neotest").run.run(vim.fn.expand("%")) end)
 
 -- commenter
 keymap.set('v', '++', '<plug>NERDCommenterToggle')
