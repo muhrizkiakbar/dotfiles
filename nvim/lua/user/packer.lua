@@ -159,7 +159,7 @@ return packer.startup(function(use)
   --})
 
   -- rspec
-  --use { 'muhrizkiakbar/vim-rspec' }
+  use { 'muhrizkiakbar/vim-rspec' }
 
   -- commenter
   use { 'preservim/nerdcommenter' }
@@ -197,4 +197,9 @@ return packer.startup(function(use)
 			"antoinemadec/FixCursorHold.nvim",
 		},
 	})
+
+  --DAP debugging js
+  use { 'mfussenegger/nvim-dap' }
+  use { 'mxsdev/nvim-dap-vscode-js' }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 end)

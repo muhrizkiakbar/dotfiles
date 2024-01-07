@@ -29,6 +29,7 @@ vim.opt.wrap = false -- No wrap line
 vim.opt.backspace = 'start,eol,indent'
 vim.opt.path:append { '**' } -- finding file - search down into subfolder
 vim.opt.wildignore:append { '*/node_modules/*' }
+vim.opt.signcolumn = 'yes'
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])

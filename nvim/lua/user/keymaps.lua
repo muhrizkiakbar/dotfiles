@@ -59,11 +59,12 @@ vim.api.nvim_set_keymap("n", "<C-Space>", ":Telescope file_browser  path=%:p:h<C
 
 -- lsp saga
 vim.keymap.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
-vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+vim.keymap.set('n', 'T', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
 vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
+vim.keymap.set('n','<leader>t', '<cmd>Lspsaga term_toggle<CR>', opts)
 
 
 -- Tree Toggle
@@ -82,13 +83,13 @@ vim.g.user_emmet_leader_key = ','
 
 
 -- RSpec
---vim.g.rspec_with_debug = 1
---keymap.set('', '<leader>c', ':call RunCurrentSpecFile()<CR>')
---keymap.set('', '<leader>s', ':call RunNearestSpec()<CR>')
---keymap.set('', '<leader>l', ':call RunLastSpec()<CR>')
---keymap.set('', '<leader>a', ':call RunAllSpecs()<CR>')
-keymap.set('', '<leader>s', function() require("neotest").run.run() end)
-keymap.set('', '<leader>c', function() require("neotest").run.run(vim.fn.expand("%")) end)
+vim.g.rspec_with_debug = 1
+keymap.set('', '<leader>c', ':call RunCurrentSpecFile()<CR>')
+keymap.set('', '<leader>s', ':call RunNearestSpec()<CR>')
+keymap.set('', '<leader>l', ':call RunLastSpec()<CR>')
+keymap.set('', '<leader>a', ':call RunAllSpecs()<CR>')
+--keymap.set('', '<leader>s', function() require("neotest").run.run() end)
+--keymap.set('', '<leader>c', function() require("neotest").run.run(vim.fn.expand("%")) end)
 
 -- commenter
 keymap.set('v', '++', '<plug>NERDCommenterToggle')
