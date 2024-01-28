@@ -52,7 +52,7 @@ nvim_tree.setup {
       },
     },
     icons = {
-      webdev_colors = false,
+      webdev_colors = true,
       git_placement = 'signcolumn',
       padding = ' ',
       symlink_arrow = ' >> ',

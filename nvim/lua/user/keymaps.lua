@@ -58,13 +58,15 @@ vim.api.nvim_set_keymap("n", "<C-B>", ":Telescope oldfiles<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-Space>", ":Telescope file_browser  path=%:p:h<CR>", opts)
 
 -- lsp saga
-vim.keymap.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<CR>")
 vim.keymap.set('n', 'T', '<Cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
 vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
 vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
 vim.keymap.set('n','<leader>t', '<cmd>Lspsaga term_toggle<CR>', opts)
+vim.keymap.set('n','<C-K>', '<cmd>Lspsaga scroll_up<CR>', opts)
+vim.keymap.set('n','<C-J>', '<cmd>Lspsaga scroll_down<CR>', opts)
 
 
 -- Tree Toggle
@@ -96,8 +98,10 @@ keymap.set('v', '++', '<plug>NERDCommenterToggle')
 keymap.set('n', '++', '<plug>NERDCommenterToggle')
 
 -- erb auto tags
-vim.g.surround_45 = "<% \r %>"
-vim.g.surround_61 = "<%= \r %>"
+vim.g.surround_45 = "<\r/>"
+--vim.g.surround_61 = "<\r ><\r/>"
+--vim.g.surround_45 = "<% \r %>"
+--vim.g.surround_61 = "<%= \r %>"
 keymap.set('n', '<leader>y', 'ysiW=<cr>')
 keymap.set('n', '<leader>u', 'ysiW-<cr>')
 

@@ -33,6 +33,11 @@ return packer.startup(function(use)
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
 
+  -- Solarized Osaka
+  use {
+    'craftzdog/solarized-osaka.nvim'
+  }
+
   --  adds vscode-like pictograms to neovim built-in lsp
   use {
     'onsails/lspkind-nvim',
@@ -129,8 +134,8 @@ return packer.startup(function(use)
 
   use { 'mattn/emmet-vim' }
 
-  ---- typescript auto tag
-  --use 'windwp/nvim-ts-autotag'
+  -- typescript auto tag
+  use 'windwp/nvim-ts-autotag'
 
   -- coloring hashtag
   use 'norcalli/nvim-colorizer.lua'
@@ -202,4 +207,7 @@ return packer.startup(function(use)
   use { 'mfussenegger/nvim-dap' }
   use { 'mxsdev/nvim-dap-vscode-js' }
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+  -- Indent
+  use "lukas-reineke/indent-blankline.nvim"
 end)
