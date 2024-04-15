@@ -5,6 +5,7 @@ lualine.setup {
   options = {
     theme = 'solarized_dark',
     icons_enabled = true,
+    --section_separators = '',
     section_separators = {  left = '', right = ''},
     component_separators = { left = '', right = ''},
     disable_filetypes = {}

@@ -11,30 +11,17 @@ nvim_tree.setup {
   hijack_netrw = true,
   auto_reload_on_write = true,
   open_on_tab = false,
-  open_on_setup = false,
   hijack_cursor = false,
   hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup = false,
   respect_buf_cwd = false,
   create_in_closed_folder = false,
   view = {
     width = 40,
     side = 'left',
-    hide_root_folder = true,
     preserve_window_proportions = false,
     number = true,
     relativenumber = true,
     signcolumn = 'yes',
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings goes here
-        { key = '<C-e>', action = '' }, -- disable <C-e> for edit file
-        -- { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        -- { key = "h", cb = tree_cb "close_node" },
-        -- { key = "v", cb = tree_cb "vsplit" },
-      },
-    },
   },
   renderer = {
     root_folder_modifier = ':p:.',
@@ -97,11 +84,6 @@ nvim_tree.setup {
     enable = true,
     update_cwd = false,
     ignore_list = {},
-  },
-  ignore_ft_on_setup = {
-    'startify',
-    'dashboard',
-    'alpha'
   },
   system_open = {
     cmd = nil,

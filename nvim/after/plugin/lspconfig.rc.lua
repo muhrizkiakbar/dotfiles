@@ -34,7 +34,21 @@ nvim_lsp.lua_ls.setup {
   }
 }
 
-nvim_lsp.tailwindcss.setup {}
+nvim_lsp.tailwindcss.setup {
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+      experimental = {
+        classRegex = { [[\bclass:\s*'([^']*)']], [[\bclass:\s*\"([^"]*)"]] }
+      }
+    }
+  },
+  init_options = {
+    userLanguages = {
+      erb = "erb",
+    }
+  }
+}
 
 nvim_lsp.solargraph.setup {
   cmd = { 'solargraph', 'stdio' },

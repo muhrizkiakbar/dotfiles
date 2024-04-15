@@ -2,7 +2,7 @@ local status, packer = pcall(require, "packer")
 
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-print("install_path: " .. install_path)
+--print("install_path: " .. install_path)
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     download_result = fn.system({'ls', '-l', install_path})
@@ -210,4 +210,18 @@ return packer.startup(function(use)
 
   -- Indent
   use "lukas-reineke/indent-blankline.nvim"
+
+  -- Test 
+  use "vim-test/vim-test"
+
+  -- Copilot
+  use{
+    'Exafunction/codeium.vim',
+    config = function()
+      vim.keymap.set('i', '<C-;>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+      vim.keymap.set('i', '<C-.>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    end
+  }
 end)

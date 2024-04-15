@@ -59,15 +59,18 @@ vim.api.nvim_set_keymap("n", "<C-Space>", ":Telescope file_browser  path=%:p:h<C
 
 -- lsp saga
 vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<CR>")
-vim.keymap.set('n', 'T', '<Cmd>Lspsaga hover_doc<CR>', opts)
-vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
-vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
+vim.keymap.set('n', 'T', '<Cmd>Lspsaga hover_doc ++keep<CR>', opts)
+vim.keymap.set('n', 'gf', '<Cmd>Lspsaga lsp_finder<CR>', opts)
+vim.keymap.set('i', '<C-l>', '<Cmd>Lspsaga signature_help<CR>', opts)
 vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
+vim.keymap.set('n', 'gd', '<Cmd>Lspsaga goto_definition<CR>', opts)
 vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
 vim.keymap.set('n','<leader>t', '<cmd>Lspsaga term_toggle<CR>', opts)
 vim.keymap.set('n','<C-K>', '<cmd>Lspsaga scroll_up<CR>', opts)
 vim.keymap.set('n','<C-J>', '<cmd>Lspsaga scroll_down<CR>', opts)
-
+vim.keymap.set('n','<C-k>', '<cmd>Lspsaga outgoing_calls<CR>', opts)
+vim.keymap.set('n','<C-j>', '<cmd>Lspsaga incoming_calls<CR>', opts)
+vim.keymap.set('n','<C-m>', '<cmd>Lspsaga code_action<CR>', opts)
 
 -- Tree Toggle
 keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
@@ -81,7 +84,10 @@ keymap.set("n", "<Space><Esc>", ":noh<CR>", opts)
 --keymap.set("", "<C-g>", ":Ag<CR>", opts)
 
 -- emmet
-vim.g.user_emmet_leader_key = ','
+vim.g.user_emmet_leader_key = '<C-e>'
+vim.api.nvim_set_keymap('i', '<C-e>e', '<esc>:call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>wwi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-e>e', ':call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>ww', { noremap = true, silent = true })
+--vim.g.user_emmet_leader_key = ','
 
 
 -- RSpec

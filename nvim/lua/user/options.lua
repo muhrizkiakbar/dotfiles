@@ -64,7 +64,4 @@ vim.diagnostic.config({
   virtual_text = {
     prefix = ''
   },
-    --prefix = '󰟟 ',
-  --prefix = '󰎎󰎎󰎎󰎎󰎎󰎎'
-    --prefix = '󰢚',
 })
