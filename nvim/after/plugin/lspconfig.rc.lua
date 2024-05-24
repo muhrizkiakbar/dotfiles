@@ -2,7 +2,9 @@ local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 local util = require 'lspconfig.util'
 
-local protocol = require('vim.lsp.protocol')
+-- Combine additional default capabilities of Nvim-CMP with the LSP capabilities to work smoothly in autocomplete:
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 
 local on_attach = function(client, bufnr)
   --formatting
@@ -45,7 +47,7 @@ nvim_lsp.tailwindcss.setup {
   },
   init_options = {
     userLanguages = {
-      erb = "erb",
+      erb = "erb", "php",
     }
   }
 }

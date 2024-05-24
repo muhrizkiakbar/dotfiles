@@ -108,7 +108,7 @@ return packer.startup(function(use)
 
   -- telescope for fuzzy finder
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -133,9 +133,6 @@ return packer.startup(function(use)
   --}
 
   use { 'mattn/emmet-vim' }
-
-  -- typescript auto tag
-  use 'windwp/nvim-ts-autotag'
 
   -- coloring hashtag
   use 'norcalli/nvim-colorizer.lua'
@@ -179,10 +176,6 @@ return packer.startup(function(use)
   use {'akinsho/git-conflict.nvim', tag = "*", config = function()
     require('git-conflict').setup()
   end}
-
-  -- vim go
-  use { 'fatih/vim-go', run = ':GoInstallBinaries' }
-
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
