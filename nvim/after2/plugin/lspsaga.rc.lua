@@ -1,7 +1,4 @@
-local status, saga = pcall(require, "lspsaga")
-if (not status) then return end
-
---saga.setup({})
+local saga = require('lspsaga')
 
 saga.setup {
   server_filetype_map = {

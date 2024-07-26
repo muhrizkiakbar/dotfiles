@@ -1,9 +1,8 @@
-local status, nvim_lsp = pcall(require, 'lspconfig')
-if (not status) then return end
 local util = require 'lspconfig.util'
+local nvim_lsp = require('lspconfig')
 
 -- Combine additional default capabilities of Nvim-CMP with the LSP capabilities to work smoothly in autocomplete:
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 local on_attach = function(client, bufnr)
@@ -53,20 +52,36 @@ nvim_lsp.tailwindcss.setup {
 }
 
 nvim_lsp.solargraph.setup {
-  cmd = { 'solargraph', 'stdio' },
+  cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
+  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
   settings = {
     solargraph = {
-      diagnostics = true,
-      syntax = { enabled = true }
-    },
-  },
-  init_options = { formatting = true },
-  filetypes = { 'ruby' },
-  root_dir = require 'lspconfig.util'.root_pattern('Gemfile', '.git'),
-    flags = {
-    debounce_text_changes = 150,
+      autoformat = true,
+      completion = true,
+      diagnostic = true,
+      folding = true,
+      references = true,
+      rename = true,
+      symbols = true
+    }
   }
 }
+
+--nvim_lsp.solargraph.setup {
+  --cmd = { 'solargraph', 'stdio' },
+  --settings = {
+    --solargraph = {
+      --diagnostics = true,
+      --syntax = { enabled = true }
+    --},
+  --},
+  --init_options = { formatting = true },
+  --filetypes = { 'ruby' },
+  --root_dir = require 'lspconfig.util'.root_pattern('Gemfile', '.git'),
+    --flags = {
+    --debounce_text_changes = 150,
+  --}
+--}
 
 
 nvim_lsp.gopls.setup {

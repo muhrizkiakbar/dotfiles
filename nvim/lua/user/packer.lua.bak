@@ -2,7 +2,7 @@ local status, packer = pcall(require, "packer")
 
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
---print("install_path: " .. install_path)
+print("install_path: " .. install_path)
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     download_result = fn.system({'ls', '-l', install_path})
@@ -22,9 +22,8 @@ vim.cmd [[packadd packer.nvim]]
 
 return packer.startup(function(use)
   -- Statusline
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  use{
+    'windwp/windline.nvim',
   }
 
   -- Neosolarized color scheme
@@ -44,23 +43,21 @@ return packer.startup(function(use)
   }
 
   -- snipper LSP
-  use({
-    "L3MON4D3/LuaSnip",
-  })
+  --use({
+    --"L3MON4D3/LuaSnip",
+  --})
 
   -- cmp LSP
   use {
     'hrsh7th/cmp-nvim-lsp'
   }
+  use {
+    'saadparwaiz1/cmp_luasnip'
+  }
 
   -- cmp Buffer
   use {
     'hrsh7th/cmp-buffer'
-  }
-
-  -- cmp NVIM
-  use {
-    'hrsh7th/nvim-cmp'
   }
 
   -- NVIM LSP
@@ -177,11 +174,6 @@ return packer.startup(function(use)
     require('git-conflict').setup()
   end}
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-
   -- Testing Package
   use({
 		"nvim-neotest/neotest",
@@ -207,14 +199,35 @@ return packer.startup(function(use)
   -- Test 
   use "vim-test/vim-test"
 
+  -- cmp NVIM
+  use {
+    'hrsh7th/nvim-cmp'
+  }
+
   -- Copilot
-  use{
+  use {
     'Exafunction/codeium.vim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'hrsh7th/nvim-cmp'},
+    },
     config = function()
-      vim.keymap.set('i', '<C-;>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-.>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      require("codeium").setup({})
     end
   }
+  --
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+  }
+  --
+  -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+
 end)
+

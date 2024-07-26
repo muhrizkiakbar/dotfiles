@@ -1,5 +1,4 @@
-local status, solarized = pcall(require, 'solarized-osaka')
-if (not status) then return end
+local solarized = require('solarized-osaka')
 
 solarized.setup({
   -- your configuration comes here

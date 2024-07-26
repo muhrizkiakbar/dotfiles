@@ -1,7 +1,8 @@
 local status, n = pcall(require, 'neotest')
 if (not status) then return end
+local neotest = require('neotest')
 
-n.setup({
+neotest.setup({
 	adapters = {
     require("neotest-rspec"),
 		require("neotest-plenary"),

@@ -11,6 +11,8 @@ vim.opt.autoindent = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
+vim.opt.showtabline=2
+vim.opt.termguicolors = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
@@ -51,7 +53,7 @@ vim.g.vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
 vim.opt.guifont="JetBrainsMono Nerd Font"
 
 -- colorscheme
-vim.cmd[[colorscheme solarized-osaka]]
+--vim.cmd[[colorscheme solarized-osaka]]
 
 -- Lsp Sign Diagnostc
  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -65,3 +67,4 @@ vim.diagnostic.config({
     prefix = ''
   },
 })
+
