@@ -31,6 +31,7 @@ require('lspkind').init({
       Module = "",
       Property = "󰜢",
       Unit = "󰑭",
+      Codeium = "",
       Value = "󰎠",
       Enum = "",
       Keyword = "󰌋",

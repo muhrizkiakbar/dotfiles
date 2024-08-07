@@ -206,14 +206,11 @@ return packer.startup(function(use)
 
   -- Copilot
   use {
-    'Exafunction/codeium.vim',
+    "Exafunction/codeium.nvim",
     requires = {
-      {'nvim-lua/plenary.nvim'},
-      {'hrsh7th/nvim-cmp'},
-    },
-    config = function()
-      require("codeium").setup({})
-    end
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    }
   }
   --
   use {
@@ -223,6 +220,8 @@ return packer.startup(function(use)
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
   }
+
+  use { "catppuccin/nvim", as = "catppuccin" }
   --
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then

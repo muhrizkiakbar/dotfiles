@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/evibar/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/evibar/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/evibar/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/Users/evibar/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/evibar/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -79,10 +79,11 @@ _G.packer_plugins = {
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
     url = "https://github.com/antoinemadec/FixCursorHold.nvim"
   },
-  LuaSnip = {
+  ["alpha-nvim"] = {
+    config = { "\27LJ\2\n`\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\26alpha.themes.startify\nsetup\nalpha\frequire\0" },
     loaded = true,
-    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/alpha-nvim",
+    url = "https://github.com/goolord/alpha-nvim"
   },
   ["bufferline.nvim"] = {
     loaded = true,
@@ -98,6 +99,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["codeium.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcodeium\frequire\0" },
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/codeium.nvim",
+    url = "https://github.com/Exafunction/codeium.nvim"
   },
   ["colorbuddy.nvim"] = {
     loaded = true,
@@ -130,6 +142,11 @@ _G.packer_plugins = {
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -139,11 +156,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -161,15 +173,29 @@ _G.packer_plugins = {
     url = "https://github.com/svrana/neosolarized.nvim"
   },
   neotest = {
-    config = { "\27LJ\2\n=\0\0\3\0\3\0\0046\0\0\0009\0\1\0005\2\2\0D\0\2\0\1\4\0\0\vbundle\texec\nrspec\16tbl_flatten\bvim\v\0\1\1\0\0\0\1L\0\2\0)\0\0\2\0\3\0\0046\0\0\0009\0\1\0009\0\2\0D\0\1\0\rtempname\afn\nasyncù\2\1\0\b\0\17\1\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\15\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\5\0003\a\4\0=\a\6\0065\a\a\0=\a\b\0065\a\t\0=\a\n\0063\a\v\0=\a\f\0063\a\r\0=\a\14\6B\4\2\0?\4\0\0=\3\16\2B\0\2\1K\0\1\0\radapters\1\0\0\17results_path\0\24transform_spec_path\0\16filter_dirs\1\3\0\0\t.git\17node_modules\15root_files\1\4\0\0\fGemfile\v.rspec\15.gitignore\14rspec_cmd\1\0\0\0\18neotest-rspec\nsetup\fneotest\frequire\3ÄÄ¿ô\4\0" },
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/neotest",
     url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-go"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/neotest-go",
+    url = "https://github.com/nvim-neotest/neotest-go"
+  },
+  ["neotest-plenary"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/neotest-plenary",
+    url = "https://github.com/nvim-neotest/neotest-plenary"
   },
   ["neotest-rspec"] = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/neotest-rspec",
     url = "https://github.com/olimorris/neotest-rspec"
+  },
+  ["neotest-vim-test"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/neotest-vim-test",
+    url = "https://github.com/nvim-neotest/neotest-vim-test"
   },
   nerdcommenter = {
     loaded = true,
@@ -185,6 +211,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-vscode-js"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/nvim-dap-vscode-js",
+    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -211,6 +252,11 @@ _G.packer_plugins = {
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["solarized-osaka.nvim"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/solarized-osaka.nvim",
+    url = "https://github.com/craftzdog/solarized-osaka.nvim"
+  },
   ["telescope-ag"] = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/telescope-ag",
@@ -236,10 +282,10 @@ _G.packer_plugins = {
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/tree-sitter-markdown",
     url = "https://github.com/MDeiml/tree-sitter-markdown"
   },
-  ["vim-go"] = {
+  ["vim-rspec"] = {
     loaded = true,
-    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/vim-go",
-    url = "https://github.com/fatih/vim-go"
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/vim-rspec",
+    url = "https://github.com/muhrizkiakbar/vim-rspec"
   },
   ["vim-rubocop"] = {
     loaded = true,
@@ -251,6 +297,16 @@ _G.packer_plugins = {
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
+  },
+  ["windline.nvim"] = {
+    loaded = true,
+    path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/windline.nvim",
+    url = "https://github.com/windwp/windline.nvim"
+  },
   ["zen-mode.nvim"] = {
     loaded = true,
     path = "/Users/evibar/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
@@ -259,14 +315,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+try_loadstring("\27LJ\2\n`\0\0\5\0\5\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\2\0\0'\4\3\0B\2\2\0029\2\4\2B\0\2\1K\0\1\0\vconfig\26alpha.themes.startify\nsetup\nalpha\frequire\0", "config", "alpha-nvim")
+time([[Config for alpha-nvim]], false)
 -- Config for: git-conflict.nvim
 time([[Config for git-conflict.nvim]], true)
 try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
 time([[Config for git-conflict.nvim]], false)
--- Config for: neotest
-time([[Config for neotest]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0046\0\0\0009\0\1\0005\2\2\0D\0\2\0\1\4\0\0\vbundle\texec\nrspec\16tbl_flatten\bvim\v\0\1\1\0\0\0\1L\0\2\0)\0\0\2\0\3\0\0046\0\0\0009\0\1\0009\0\2\0D\0\1\0\rtempname\afn\nasyncù\2\1\0\b\0\17\1\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\15\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\5\0003\a\4\0=\a\6\0065\a\a\0=\a\b\0065\a\t\0=\a\n\0063\a\v\0=\a\f\0063\a\r\0=\a\14\6B\4\2\0?\4\0\0=\3\16\2B\0\2\1K\0\1\0\radapters\1\0\0\17results_path\0\24transform_spec_path\0\16filter_dirs\1\3\0\0\t.git\17node_modules\15root_files\1\4\0\0\fGemfile\v.rspec\15.gitignore\14rspec_cmd\1\0\0\0\18neotest-rspec\nsetup\fneotest\frequire\3ÄÄ¿ô\4\0", "config", "neotest")
-time([[Config for neotest]], false)
+-- Config for: codeium.nvim
+time([[Config for codeium.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcodeium\frequire\0", "config", "codeium.nvim")
+time([[Config for codeium.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

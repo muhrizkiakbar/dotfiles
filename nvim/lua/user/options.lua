@@ -50,10 +50,10 @@ vim.opt.formatoptions:append { 'r' }
 vim.g.vimrubocop_config = '~/Project/Performance-API/.rubocop.yml'
 
 -- Font
-vim.opt.guifont="JetBrainsMono Nerd Font"
+vim.opt.guifont="SauceCodePro Nerd Font"
 
 -- colorscheme
---vim.cmd[[colorscheme solarized-osaka]]
+vim.cmd[[colorscheme solarized-osaka]]
 
 -- Lsp Sign Diagnostc
  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
