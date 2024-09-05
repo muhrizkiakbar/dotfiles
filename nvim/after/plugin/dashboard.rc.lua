@@ -68,6 +68,10 @@ local header = {
   [[ ██████████████████████████████████████████████████ ]],
   [[ ██████████████████████████████████████████████████ ]],
   [[ ██████████████████████████████████████████████████ ]],
+  [[ ██████████████████████████████████████████████████ ]],
+  [[ ██████████████████████████████████████████████████ ]],
+  [[ ██████████████████████████████████████████████████ ]],
+                        
 }
 
 local color_map = {
@@ -96,6 +100,9 @@ local color_map = {
   [[ BBBBBBBBBBRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRBBBBBBBBBB ]], --23
   [[ BBBBBBBBBBBBBBRRRRRRRRRRRRRRRRRRRRRRBBBBBBBBBBBBBB ]], --24
   [[ BBBBBBBBBBBBBBBBBBRRRRRRRRRRRRRRBBBBBBBBBBBBBBBBBB ]], --25
+  [[ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB ]], --25
+  [[ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB ]], --25
+  [[ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB ]], --25
 }
 
 local colors = {
@@ -121,5 +128,27 @@ for _, a in ipairs(dashboard.section.buttons.val) do
   a.opts.width = 49
   a.opts.cursor = -2
 end
+
+local function footer()
+  local total_plugins = #vim.tbl_keys(packer_plugins)
+  local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+  local version = vim.version()
+  local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+
+  local value = {
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+  }
+  return value
+end
+
+dashboard.section.footer.val = footer()
+dashboard.section.footer.opts.hl = "Constant"
 
 alpha.setup(dashboard.config)

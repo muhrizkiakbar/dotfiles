@@ -16,6 +16,7 @@
   --vim.g.neovide_background_color = "#001e26" .. alpha()
   vim.api.nvim_set_hl(0, 'Normal', { bg = "#001e26" })
   vim.o.guifont = "SauceCodePro Nerd Font:h14" -- text below applies for VimScript
+  --vim.o.guifont = "SauceCodePro Nerd Font:h12" -- text below applies for VimScript
   vim.opt.linespace = -1
   --vim.g.neovide_scale_factor = 4.0
 
