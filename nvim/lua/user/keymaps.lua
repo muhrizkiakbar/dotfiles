@@ -14,11 +14,11 @@ keymap.set('n', 'dw', 'vb"_d')
 keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- New Tab
-keymap.set('n', 'te', ':tabedit<Return>', { silent = true } )
+keymap.set('n', 'te', ':tabedit<Return>', { silent = true })
 
 -- Splitwindow
-keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true } )
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { silent = true } )
+keymap.set('n', 'ss', ':split<Return><C-w>w', { silent = true })
+keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { silent = true })
 
 -- Move window
 keymap.set('n', '<A>', '<C-w>w')
@@ -40,7 +40,7 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 local opts = { noremap = true, silent = true }
 
 --keymap.set('n', '<C-g>', ':Ag',opts)
-keymap.set('i', 'jj', '<Esc>', { noremap = true } )
+keymap.set('i', 'jj', '<Esc>', { noremap = true })
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", opts)
@@ -58,19 +58,28 @@ vim.api.nvim_set_keymap("n", "<C-B>", ":Telescope oldfiles<CR>", opts)
 vim.api.nvim_set_keymap("n", "<C-Space>", ":Telescope file_browser  path=%:p:h<CR>", opts)
 
 -- lsp saga
-vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<CR>")
-vim.keymap.set('n', 'T', '<Cmd>Lspsaga hover_doc ++keep<CR>', opts)
-vim.keymap.set('n', 'gf', '<Cmd>Lspsaga lsp_finder<CR>', opts)
-vim.keymap.set('i', '<C-l>', '<Cmd>Lspsaga signature_help<CR>', opts)
-vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
-vim.keymap.set('n', 'gd', '<Cmd>Lspsaga goto_definition<CR>', opts)
-vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
-vim.keymap.set('n','<leader>t', '<cmd>Lspsaga term_toggle<CR>', opts)
-vim.keymap.set('n','<C-K>', '<cmd>Lspsaga scroll_up<CR>', opts)
-vim.keymap.set('n','<C-J>', '<cmd>Lspsaga scroll_down<CR>', opts)
-vim.keymap.set('n','<C-k>', '<cmd>Lspsaga outgoing_calls<CR>', opts)
-vim.keymap.set('n','<C-j>', '<cmd>Lspsaga incoming_calls<CR>', opts)
-vim.keymap.set('n','<C-m>', '<cmd>Lspsaga code_action<CR>', opts)
+-- Hover documentation
+vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
+-- Jump to definition
+vim.keymap.set('n', 'gd', '<cmd>Lspsaga goto_definition<CR>', opts)
+
+-- Peek definition (preview without jumping)
+vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>', opts)
+
+-- Show line diagnostics
+vim.keymap.set('n', '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
+
+-- Next/previous diagnostic
+vim.keymap.set('n', '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+vim.keymap.set('n', ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+
+-- Code action
+vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
+
+-- Rename symbol
+vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', opts)
+vim.keymap.set('n', '<leader>t', '<cmd>Lspsaga term_toggle<CR>', opts)
+
 
 -- Tree Toggle
 keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
@@ -85,8 +94,10 @@ keymap.set("n", "<Space><Esc>", ":noh<CR>", opts)
 
 -- emmet
 vim.g.user_emmet_leader_key = '<C-e>'
-vim.api.nvim_set_keymap('i', '<C-e>e', '<esc>:call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>wwi', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-e>e', ':call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>ww', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-e>e', '<esc>:call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>wwi',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-e>e', ':call emmet#expandAbbr(0,"")<cr>h:call emmet#splitJoinTag()<cr>ww',
+  { noremap = true, silent = true })
 --vim.g.user_emmet_leader_key = ','
 
 

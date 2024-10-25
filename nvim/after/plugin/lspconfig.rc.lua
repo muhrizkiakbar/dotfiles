@@ -7,15 +7,23 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
   --formatting
+  --if client.server_capabilities.documentFormattingProvider then
+  --vim.api.nvim_command [[augroup format]]
+  --vim.api.nvim_command [[autocmd! * <buffer>]]
+  --vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync() ]]
+  --vim.api.nvim_command [[augroup END]]
+  --end
+  --
+
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_command [[augroup format]]
     vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync() ]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = false })]]
     vim.api.nvim_command [[augroup END]]
   end
 end
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.ts_ls.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
   cmd = { "typescript-language-server", "--stdio" },
@@ -51,36 +59,46 @@ nvim_lsp.tailwindcss.setup {
   }
 }
 
-nvim_lsp.solargraph.setup {
-  cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
-  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-  settings = {
-    solargraph = {
-      autoformat = true,
-      completion = true,
-      diagnostic = true,
-      folding = true,
-      references = true,
-      rename = true,
-      symbols = true
-    }
-  }
+nvim_lsp.ruby_lsp.setup {
+  cmd = { "ruby-lsp" },
+  filetypes = { "ruby" },
+  init_options = {
+    formatter = "auto"
+  },
+  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git"),
+  single_file_support = true
 }
 
 --nvim_lsp.solargraph.setup {
-  --cmd = { 'solargraph', 'stdio' },
-  --settings = {
-    --solargraph = {
-      --diagnostics = true,
-      --syntax = { enabled = true }
-    --},
-  --},
-  --init_options = { formatting = true },
-  --filetypes = { 'ruby' },
-  --root_dir = require 'lspconfig.util'.root_pattern('Gemfile', '.git'),
-    --flags = {
-    --debounce_text_changes = 150,
-  --}
+--cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", 'stdio' },
+--root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+--settings = {
+--solargraph = {
+--autoformat = true,
+--completion = true,
+--diagnostic = true,
+--folding = true,
+--references = true,
+--rename = true,
+--symbols = true
+--}
+--}
+--}
+
+--nvim_lsp.solargraph.setup {
+--cmd = { 'solargraph', 'stdio' },
+--settings = {
+--solargraph = {
+--diagnostics = true,
+--syntax = { enabled = true }
+--},
+--},
+--init_options = { formatting = true },
+--filetypes = { 'ruby' },
+--root_dir = require 'lspconfig.util'.root_pattern('Gemfile', '.git'),
+--flags = {
+--debounce_text_changes = 150,
+--}
 --}
 
 
@@ -90,7 +108,7 @@ nvim_lsp.gopls.setup {
   init_options = { formatting = true },
   filetypes = { "go", "gomod", "gotmpl", "gowork" },
   root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
-    flags = {
+  flags = {
     debounce_text_changes = 150,
   },
   single_file_support = true,

@@ -1,40 +1,39 @@
-
 local function getLen(str, start_pos)
-	local byte = string.byte(str, start_pos)
-	if not byte then
-		return nil
-	end
+  local byte = string.byte(str, start_pos)
+  if not byte then
+    return nil
+  end
 
-	return (byte < 0x80 and 1) or (byte < 0xE0 and 2) or (byte < 0xF0 and 3) or (byte < 0xF8 and 4) or 1
+  return (byte < 0x80 and 1) or (byte < 0xE0 and 2) or (byte < 0xF0 and 3) or (byte < 0xF8 and 4) or 1
 end
 
 local function colorize(header, header_color_map, colors)
-	for letter, color in pairs(colors) do
-		local color_name = "AlphaJemuelKwelKwelWalangTatay" .. letter
-		vim.api.nvim_set_hl(0, color_name, color)
-		colors[letter] = color_name
-	end
+  for letter, color in pairs(colors) do
+    local color_name = "AlphaJemuelKwelKwelWalangTatay" .. letter
+    vim.api.nvim_set_hl(0, color_name, color)
+    colors[letter] = color_name
+  end
 
-	local colorized = {}
+  local colorized = {}
 
-	for i, line in ipairs(header_color_map) do
-		local colorized_line = {}
-		local pos = 0
+  for i, line in ipairs(header_color_map) do
+    local colorized_line = {}
+    local pos = 0
 
-		for j = 1, #line do
-			local start = pos
-			pos = pos + getLen(header[i], start + 1)
+    for j = 1, #line do
+      local start = pos
+      pos = pos + getLen(header[i], start + 1)
 
-			local color_name = colors[line:sub(j, j)]
-			if color_name then
-				table.insert(colorized_line, { color_name, start, pos })
-			end
-		end
+      local color_name = colors[line:sub(j, j)]
+      if color_name then
+        table.insert(colorized_line, { color_name, start, pos })
+      end
+    end
 
-		table.insert(colorized, colorized_line)
-	end
+    table.insert(colorized, colorized_line)
+  end
 
-	return colorized
+  return colorized
 end
 
 local alpha = require("alpha")
@@ -71,7 +70,7 @@ local header = {
   [[ ██████████████████████████████████████████████████ ]],
   [[ ██████████████████████████████████████████████████ ]],
   [[ ██████████████████████████████████████████████████ ]],
-                        
+
 }
 
 local color_map = {
@@ -130,7 +129,10 @@ for _, a in ipairs(dashboard.section.buttons.val) do
 end
 
 local function footer()
-  local total_plugins = #vim.tbl_keys(packer_plugins)
+  local total_plugins = 0
+  if _G.packer_plugins then
+    total_plugins = vim.tbl_count(_G.packer_plugins) -- Count loaded plugins
+  end
   local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
   local version = vim.version()
   local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
