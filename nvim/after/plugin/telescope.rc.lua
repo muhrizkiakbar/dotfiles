@@ -14,8 +14,8 @@ telescope.load_extension("ag")
 telescope.setup {
   config = function()
     local telescope_ag = require("telescope-ag")
-      telescope_ag.setup({
-        cmd = telescope_ag.cmds.rg, -- defaults to telescope_ag.cmds.ag
+    telescope_ag.setup({
+      cmd = telescope_ag.cmds.rg,   -- defaults to telescope_ag.cmds.ag
     })
   end,
   defaults = {
@@ -28,11 +28,11 @@ telescope.setup {
   -- depends on `nvim-telescope/telescope-fzf-native.nvim`
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     },
     file_browser = {
       theme = "dropdown",

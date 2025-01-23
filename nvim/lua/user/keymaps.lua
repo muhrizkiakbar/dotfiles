@@ -90,7 +90,7 @@ keymap.set("n", "<leader>fa", ":setlocal foldmethod=indent<CR>", opts)
 -- remove highlight
 keymap.set("n", "<Space><Esc>", ":noh<CR>", opts)
 
---keymap.set("", "<C-g>", ":Ag<CR>", opts)
+--keymap.set("", "<C-g>", ":Ag ''<CR>", opts)
 
 -- emmet
 vim.g.user_emmet_leader_key = '<C-e>'
